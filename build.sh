@@ -1,1 +1,1 @@
-pyinstaller --onefile app.py
+python -m nuitka --follow-imports --standalone --onefile --include-package=selenium app.py

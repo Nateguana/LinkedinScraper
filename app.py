@@ -168,6 +168,6 @@ for index in range(1, len(urls)):
 
 # %%
 hours=3
-next_hours=3.5
+next_hours=3.5 - 5.0/60
 
 
