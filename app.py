@@ -1,13 +1,14 @@
 # %%
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from urllib.parse import urlparse
 from selenium import webdriver
-from pptx import Presentation
+# from pptx import Presentation
 from typing import TypedDict
-import pdb
-import sys
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+# import pdb
+# import sys
 import re
 import time 
 
@@ -41,9 +42,7 @@ if len(urls) == 0:
 
 
 def setup_driver():
-    options = webdriver.ChromeOptions()
-    service = Service()
-    return webdriver.Chrome(service=service, options=options)
+    return webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 
 driver = setup_driver()
@@ -78,7 +77,7 @@ def scrape_single_exp(element: WebElement):
     return experience
 
 
-def scrape_multi_exp(title_element: WebElement, exp_elements: WebElement):
+def scrape_multi_exp(title_element: WebElement, exp_elements: list[WebElement]):
     title_link_ele = title_element.find_elements(By.TAG_NAME, "a")[1]
     # print(title_link_ele.text)
     # print(title_link_ele)
