@@ -7,6 +7,7 @@ from selenium import webdriver
 from typing import TypedDict
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
 # import pdb
 # import sys
 import re
@@ -42,7 +43,7 @@ if len(urls) == 0:
 
 
 def setup_driver():
-    return webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    return webdriver.Chrome()
 
 
 driver = setup_driver()
