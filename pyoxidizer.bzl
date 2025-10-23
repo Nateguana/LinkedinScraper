@@ -10,7 +10,7 @@ def make_exe():
     # Obtain the default PythonDistribution for our build target. We link
     # this distribution into our produced executable and extract the Python
     # standard library from it.
-    dist = default_python_distribution()
+    dist = default_python_distribution(flavor = "standalone_static")
 
     # This function creates a `PythonPackagingPolicy` instance, which
     # influences how executables are built and how resources are added to
@@ -25,13 +25,13 @@ def make_exe():
     # Control support for loading Python extensions and other shared libraries
     # from memory. This is only supported on Windows and is ignored on other
     # platforms.
-    # policy.allow_in_memory_shared_library_loading = True
+    policy.allow_in_memory_shared_library_loading = True
 
     # Control whether to generate Python bytecode at various optimization
     # levels. The default optimization level used by Python is 0.
     # policy.bytecode_optimize_level_zero = True
     # policy.bytecode_optimize_level_one = True
-    # policy.bytecode_optimize_level_two = True
+    policy.bytecode_optimize_level_two = True
 
     # Package all available Python extensions in the distribution.
     # policy.extension_module_filter = "all"
@@ -196,13 +196,13 @@ def make_exe():
     # python_config.run_module = "<module>"
 
     # Run a Python file when the interpreter starts.
-    # python_config.run_filename = "/path/to/file"
+    python_config.run_filename = "app.py"
 
     # Produce a PythonExecutable from a Python distribution, embedded
     # resources, and other options. The returned object represents the
     # standalone executable that will be built.
     exe = dist.to_python_executable(
-        name="myapp",
+        name="LinkedinScraper",
 
         # If no argument passed, the default `PythonPackagingPolicy` for the
         # distribution is used.
@@ -228,7 +228,7 @@ def make_exe():
     # exe.windows_runtime_dlls_mode = "always"
 
     # Make the executable a console application on Windows.
-    # exe.windows_subsystem = "console"
+    exe.windows_subsystem = "console"
 
     # Make the executable a non-console application on Windows.
     # exe.windows_subsystem = "windows"
@@ -290,13 +290,13 @@ def make_msi(exe):
     # .msi installer when it is built.
     return exe.to_wix_msi_builder(
         # Simple identifier of your app.
-        "myapp",
+        "LinkedinScraper",
         # The name of your application.
-        "My Application",
+        "LinkedinScraper",
         # The version of your application.
         "1.0",
         # The author/manufacturer of your application.
-        "Alice Jones"
+        "Nate Westfall"
     )
 
 
