@@ -167,7 +167,7 @@ for index in range(1, len(urls)):
 # driver.get("https://www.linkedin.com/in/jdunphy/")
 
 # %%
-hours=3
-next_hours=3.5 - 5.0/60
+programming=3.5
+builders = 2.5
 
 
