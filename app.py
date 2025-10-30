@@ -1,17 +1,17 @@
 # %%
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.common.by import By
-from urllib.parse import urlparse
-from selenium import webdriver
-# from pptx import Presentation
-from typing import TypedDict
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.os_manager import ChromeType
+# from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.core.os_manager import ChromeType
 # import pdb
 # import sys
+from pptx import Presentation
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
+from typing import TypedDict
+from urllib.parse import urlparse
 import re
-import time 
+import time
 
 # %%
 
@@ -169,5 +169,3 @@ for index in range(1, len(urls)):
 # %%
 programming=3.5
 builders = 2.5
-
-
